@@ -19,9 +19,10 @@ pod/basic-pod created
 ### Ganesh notes 
 
 /home/CSCC/vganesh/IdeaProjects/infrastructure-kubernetes-week-1-examples-vganesh
-$ minikube start
+$ **minikube start**
 
-$ minikube status
+$ **minikube status**
+
 minikube
 type: Control Plane
 host: Running
@@ -30,13 +31,16 @@ apiserver: Running
 kubeconfig: Configured
 
 /home/CSCC/vganesh/IdeaProjects/infrastructure-kubernetes-week-1-examples-vganesh/commands/1.create
-$ ls
+$ **ls**
+
 basic-pod.yml  readme.md
 
-$ kubectl create -f basic-pod.yml
+$ **kubectl create -f basic-pod.yml**
+
 pod/basic-pod created
 
-$ kubectl get pods --all-namespaces
+$ **kubectl get pods --all-namespaces**
+
 NAMESPACE     NAME                               READY   STATUS    RESTARTS   AGE
 default       basic-pod                          1/1     Running   0          28s
 kube-system   coredns-787d4945fb-5xxqm           1/1     Running   0          22m
@@ -49,7 +53,8 @@ kube-system   storage-provisioner                1/1     Running   0          22
 
 
 
-$ kubectl describe pod basic-pod
+$ **kubectl describe pod basic-pod**
+
 Name:             basic-pod
 Namespace:        default
 Priority:         0
@@ -104,11 +109,11 @@ Normal  Pulled     67s   kubelet            Successfully pulled image "nginx:sta
 Normal  Created    67s   kubelet            Created container nginx
 Normal  Started    66s   kubelet            Started container nginx
 
-$ kubectl delete pod basic-pod
+$ **kubectl delete pod basic-pod**
 
 pod "basic-pod" deleted
 
-$ kubectl describe pod basic-pod
+$ **kubectl describe pod basic-pod**
 
 Error from server (NotFound): pods "basic-pod" not found
 
