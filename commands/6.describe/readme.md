@@ -69,7 +69,7 @@ Show details of a specific resource or group of resources.
 
 **kubectl describe TYPE NAME_PREFIX**
 
-Valid values for **TYPE** are resources like pods, deployments and many more listed below. A brief explanation of resources follow. 
+Valid values for **TYPE** are resources like pods, deployments and many more listed below. _A brief explanation of resources follows._ 
 
 Use "kubectl api-resources" for a complete list of supported resources.
 
@@ -194,15 +194,38 @@ Secrets are similar to ConfigMaps but are specifically intended to hold confiden
 
 How to create secrets and use it in a pod is explained here - https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#define-container-environment-variables-using-secret-data 
 
-$ kubectl get secrets
+$ **kubectl get secrets**
+
 No resources found in default namespace.
 
 
-I have permission to manipulate secrets in the minikube. 
+C:\Users\ganesv2
 
-However, I do not have permission to get secrets. 
+**kubectl get secrets -n mac-cpp**
 
-kubectl get secrets
+Thirty nine secrets are listed by the above command. 
+
+**kubectl describe secret <SECRET-NAME>  -n mac-cpp**
+
+Name:         stix-properties-dev
+Namespace:    mac-cpp
+Labels:       <none>
+Annotations:  kubernetes.io/change-cause: kubectl apply --kubeconfig=config --filename=manifests.yaml --record=true
+
+Type:  Opaque
+
+Data
+====
+
+environment.properties:  8921 bytes
+log4j.properties:        1833 bytes
+log4j2.xml:              913 bytes
+
+
+These three files are stored as a part of the secret and are available in the classpath when the java app runs. 
+
+
+
 Error from server (Forbidden): secrets is forbidden: User "u-5atut5g647" cannot list resource "secrets" in API group "" in the namespace "default"
 
 I can go to vault site inside Nationwide network and see the secrets accessible to me and my team members. 
@@ -226,11 +249,14 @@ At my work place.
 
 C:\Users\ganesv2
 
-kubectl get services
+kubectl get services -n mac-cpp
 
-Error from server (Forbidden): services is forbidden: User "u-5atut5g647" cannot list resource "services" in API group "" in the namespace "default"
+There are seventeen services listed. 
 
-However, I can login to rancher web site inside Nationwide and see the services https://<rancher-dashboard-url>/c/c-v5zwm/explorer/service 
+**kubectl describe service <SERVICE-NAME> -n mac-cpp**
+
+
+I can login to rancher web site inside Nationwide and see the services https://<rancher-dashboard-url>/c/c-v5zwm/explorer/service 
 
 When I look at Service: dev-stix-consumer-search , an app I am working on, it has following items. 
 
@@ -276,19 +302,22 @@ $ **kubectl get rs -n mac-cpp | wc -l**
 
 There are three nginx pods running. 
 
-$ kubectl get pods
+$ **kubectl get pods**
 
 NAME                        READY   STATUS    RESTARTS   AGE
 
 my-nginx-85996f8dbd-4qdhj   1/1     Running   0          4h38m
+
 my-nginx-85996f8dbd-cfnj8   1/1     Running   0          4h38m
+
 my-nginx-85996f8dbd-j4t7d   1/1     Running   0          4h38m
+
 vganesh                     1/1     Running   0          4h51m
 
 
 There is one nginx replica set available. Maybe this rs will be used if one the pod crashes? 
 
-$ kubectl get rs
+$ **kubectl get rs**
 
 NAME                  DESIRED   CURRENT   READY   AGE
 
@@ -297,12 +326,14 @@ my-nginx-85996f8dbd   3         3         3       4h38m
 
 https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/
 
-CronJob is meant for performing regular scheduled actions such as backups, report generation, and so on.
+**CronJob** is meant for performing regular scheduled actions such as backups, report generation, and so on.
 
 **kubectl get cronjobs -n mac-cpp**
 
 NAME                   SCHEDULE       SUSPEND   ACTIVE   LAST SCHEDULE   AGE
+
 dev-piixe-reporting    13 22 31 2 *   True      0        <none>          5d22h
+
 test-piixe-reporting   13 22 31 2 *   True      0        <none>          5d22h
 
 TODO: Get crud commands cronjob related, as well how to see the cronjob log files? Can you see the cronjob log file five minutes after the cronjon has completed? Is that possible? 
@@ -331,7 +362,7 @@ $ **kubectl get ing -n mac-cpp | wc -l**
 
 dev-stix-consumer-search
 
-**kubectl describe ing dev-stix-consumer-search  -n mac-cpp**
+**kubectl describe ing <NAME-ING>  -n mac-cpp**
 
 
 The output of the above command says if I go to a host listed in the command output, that host is mapped to consumer search app pod. 
@@ -342,6 +373,8 @@ The output of the above command says if I go to a host listed in the command out
 $ **kubectl get ing**
 
 No resources found in default namespace.
+
+At my work place, 
 
 
 **kubectl get roles -n mac-cpp**
@@ -363,9 +396,9 @@ A **StorageClass** provides a way for administrators to describe the "classes" o
 
 https://medium.com/devops-mojo/kubernetes-storage-options-overview-persistent-volumes-pv-claims-pvc-and-storageclass-sc-k8s-storage-df71ca0fccc3#:~:text=Persistent%20Volume%20%E2%80%94%20low%20level%20representation,dynamic%20provisioning%20of%20Persistent%20Volumes.
 
-1. Persistent Volume — low level representation of a storage volume.
-2. Persistent Volume Claim — binding between a Pod and Persistent Volume.
-3. Storage Class — allows for dynamic provisioning of Persistent Volumes.
+1. **Persistent Volume** — low level representation of a storage volume.
+2. **Persistent Volume Claim** — binding between a Pod and Persistent Volume.
+3. **Storage Class** — allows for dynamic provisioning of Persistent Volumes.
 
 
 
