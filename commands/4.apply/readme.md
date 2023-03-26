@@ -72,7 +72,8 @@ deployment.apps/my-nginx created
 $ **kubectl get deployments**
 
 NAME       READY   UP-TO-DATE   AVAILABLE   AGE
-my-nginx   3/3     3            3           17s
+
+**my-nginx**   3/3     3            3           17s
 
 $ **kubectl describe  deployment my-nginx**
 
