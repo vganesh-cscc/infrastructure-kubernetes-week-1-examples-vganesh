@@ -103,9 +103,14 @@ TODO: Find out the fields folks change in a deployment for all practical purpose
 
 
 
+$ **kubectl get deployments**
+
+NAME       READY   UP-TO-DATE   AVAILABLE   AGE
+
+my-nginx   3/3     3            3           174m
 
 
-$ kubectl describe  deployment my-nginx
+$ **kubectl describe  deployment my-nginx**
 
 Name:                   my-nginx
 Namespace:              default
