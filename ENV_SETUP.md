@@ -103,3 +103,117 @@ Nothing to submit
 [install-kubectl]: https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl
 [install-minikube]: https://kubernetes.io/docs/tasks/tools/install-minikube/
 [install-completion]: https://kubernetes.io/docs/tasks/tools/install-kubectl/#enabling-shell-autocompletion
+
+## Ganesh notes. 
+
+```agsl
+curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
+&& chmod +x minikube
+
+sudo mkdir -p /usr/local/bin/
+
+sudo install minikube /usr/local/bin/
+
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+
+
+
+
+
+```
+ls -ltr /usr/local/bin/kubectl
+-rwxr-xr-x. 1 vganesh docker 48037888 Mar 20 18:51 /usr/local/bin/kubectl
+
+
+kubectl version --client
+
+$ kubectl version --short
+Flag --short has been deprecated, and will be removed in the future. The --short output will become the default.
+Client Version: v1.26.3
+Kustomize Version: v4.5.7
+Server Version: v1.26.1
+
+https://kubernetes.io/docs/tutorials/hello-minikube/
+
+
+minikube dashboard --url
+...
+Verifying proxy health ...
+http://127.0.0.1:44772/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/
+
+From another terminal 
+
+/home/CSCC/vganesh/IdeaProjects/infrastructure-kubernetes-week-1-examples-vganesh
+$ minikube start
+
+😄  minikube v1.29.0 on Centos 7.9.2009
+
+✨  Using the docker driver based on existing profile
+
+👍  Starting control plane node minikube in cluster minikube
+
+🚜  Pulling base image ...
+
+🏃  Updating the running docker "minikube" container ...
+
+🐳  Preparing Kubernetes v1.26.1 on Docker 20.10.23 ...
+
+🔎  Verifying Kubernetes components...
+
+▪ Using image gcr.io/k8s-minikube/storage-provisioner:v5
+
+❗  Executing "docker container inspect minikube --format={{.State.Status}}" took an unusually long time: 3.626301816s
+
+💡  Restarting the docker service may improve performance.
+
+▪ Using image docker.io/kubernetesui/metrics-scraper:v1.0.8
+
+▪ Using image docker.io/kubernetesui/dashboard:v2.7.0
+
+💡  Some dashboard features require the metrics-server addon. To enable all features please run:
+
+        minikube addons enable metrics-server   
+
+
+🌟  Enabled addons: storage-provisioner, default-storageclass, dashboard
+
+🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
+
+/home/CSCC/vganesh/IdeaProjects/infrastructure-kubernetes-week-1-examples-vganesh
+$ 
+
+$ minikube status
+minikube
+type: Control Plane
+host: Running
+kubelet: Running
+apiserver: Running
+kubeconfig: Configured
+
+
+
+/home/CSCC/vganesh/IdeaProjects/infrastructure-kubernetes-week-1-examples-vganesh
+$ minikube stop
+
+✋  Stopping node "minikube"  ...
+
+🛑  Powering off "minikube" via SSH ...
+
+🛑  1 node stopped.
+
+/home/CSCC/vganesh/IdeaProjects/infrastructure-kubernetes-week-1-examples-vganesh
+
+$ minikube delete
+
+🔥  Deleting "minikube" in docker ...
+
+🔥  Deleting container "minikube" ...
+
+🔥  Removing /home/CSCC/vganesh/.minikube/machines/minikube ...
+
+💀  Removed all traces of the "minikube" cluster.
+
+/home/CSCC/vganesh/IdeaProjects/infrastructure-kubernetes-week-1-examples-vganesh
+$ 
+
+

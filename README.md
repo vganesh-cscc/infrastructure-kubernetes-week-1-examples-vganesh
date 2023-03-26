@@ -64,3 +64,12 @@ Under the commands directory you will see subfolders for some of the commands in
 ### 3 - More commands
 Find *two* more commands not in the examples we went through from [kubetcl overview](https://kubernetes.io/docs/reference/kubectl/overview/) and execute them.
 
+##   Ganesh notes 
+
+Kubernetes pods and services are resources. In a pod, docker image can run. 
+
+kubectl commands (Created, get, update (apply) and delete) are for managing the resources. 
+
+This is similar to docker CRUD commands related to managing images and containers. 
+
+
