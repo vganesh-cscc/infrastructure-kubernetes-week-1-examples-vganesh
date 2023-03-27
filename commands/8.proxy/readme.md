@@ -81,11 +81,13 @@ http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/http:kuber
 ## Ganesh notes 
 
 $ **k proxy**
+
 Starting to serve on 127.0.0.1:8001
 
 From another terminal 
 
 $ **curl 127.0.0.1:8001/version**
+
 {
 "major": "1",
 "minor": "26",
