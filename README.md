@@ -68,7 +68,7 @@ Find *two* more commands not in the examples we went through from [kubetcl overv
 
 Kubernetes pods and services are resources. In a pod, docker image can run. 
 
-kubectl commands (Created, get, update (apply) and delete) are for managing the resources. 
+kubectl commands (create, get, update (apply) and delete) are for managing the resources. 
 
 This is similar to docker CRUD commands related to managing images and containers. 
 

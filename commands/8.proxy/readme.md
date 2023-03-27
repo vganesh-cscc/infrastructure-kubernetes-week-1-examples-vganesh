@@ -77,3 +77,53 @@ OR you can visit the url in your browser and you should see the nginx-homepage
 In the pre-lab we used `minikube dashboard` to open the dashboard page. Similarly after using `kubectl proxy` we can visit the dashboard by visiting 
 
 http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/
+
+## Ganesh notes 
+
+$ **k proxy**
+Starting to serve on 127.0.0.1:8001
+
+From another terminal 
+
+$ **curl 127.0.0.1:8001/version**
+{
+"major": "1",
+"minor": "26",
+"gitVersion": "v1.26.1",
+"gitCommit": "8f94681cd294aa8cfd3407b8191f6c70214973a4",
+"gitTreeState": "clean",
+"buildDate": "2023-01-18T15:51:25Z",
+"goVersion": "go1.19.5",
+"compiler": "gc",
+"platform": "linux/amd64"
+}
+
+
+$ **curl http://127.0.0.1:8001/api/v1/namespaces/default/pods/vganesh/proxy/**
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+html { color-scheme: light dark; }
+body { width: 35em; margin: 0 auto;
+font-family: Tahoma, Verdana, Arial, sans-serif; }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+
+
