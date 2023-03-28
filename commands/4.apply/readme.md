@@ -41,6 +41,7 @@ No resources found in default namespace.
 
 $ **cat basic-pod.yml**
 
+```aidl
 apiVersion: v1
 kind: Pod
 metadata:
@@ -51,6 +52,8 @@ containers:
   image: nginx:stable-alpine
   ports:
     - containerPort: 80
+
+```
       
 
 $ **kubectl apply -f basic-pod.yml**
@@ -76,7 +79,7 @@ NAME       READY   UP-TO-DATE   AVAILABLE   AGE
 **my-nginx**   3/3     3            3           17s
 
 $ **kubectl describe  deployment my-nginx**
-
+```aidl
 Name:                   my-nginx
 Namespace:              default
 CreationTimestamp:      Sun, 26 Mar 2023 11:43:48 -0400
@@ -110,4 +113,7 @@ Type    Reason             Age   From                   Message
 Normal  ScalingReplicaSet  40s   deployment-controller  Scaled up replica set my-nginx-85996f8dbd to 3
 
 
+
+
+```
 

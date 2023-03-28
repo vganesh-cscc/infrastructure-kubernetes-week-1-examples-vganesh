@@ -22,7 +22,7 @@ pod/basic-pod created
 $ **minikube start**
 
 $ **minikube status**
-
+```aidl
 minikube
 type: Control Plane
 host: Running
@@ -30,7 +30,10 @@ kubelet: Running
 apiserver: Running
 kubeconfig: Configured
 
+```
+
 /home/CSCC/vganesh/IdeaProjects/infrastructure-kubernetes-week-1-examples-vganesh/commands/1.create
+
 $ **ls**
 
 basic-pod.yml  readme.md
@@ -54,7 +57,7 @@ kube-system   storage-provisioner                1/1     Running   0          22
 
 
 $ **kubectl describe pod basic-pod**
-
+```aidl
 Name:             basic-pod
 Namespace:        default
 Priority:         0
@@ -108,6 +111,9 @@ Normal  Pulling    69s   kubelet            Pulling image "nginx:stable-alpine"
 Normal  Pulled     67s   kubelet            Successfully pulled image "nginx:stable-alpine" in 1.860339838s (1.860352352s including waiting)
 Normal  Created    67s   kubelet            Created container nginx
 Normal  Started    66s   kubelet            Started container nginx
+
+
+```
 
 $ **kubectl delete pod basic-pod**
 

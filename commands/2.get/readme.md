@@ -39,7 +39,7 @@ basic-pod   1/1     Running   0          2m4s   172.18.0.4   minikube   <none>  
 /home/CSCC/vganesh/IdeaProjects/infrastructure-kubernetes-week-1-examples-vganesh/commands/2.get
 
 $ **cat basic-pod.yml**
-
+```aidl
 apiVersion: v1
 kind: Pod
 metadata:
@@ -50,6 +50,8 @@ containers:
   image: nginx:stable-alpine
   ports:
     - containerPort: 80/home/CSCC/vganesh/IdeaProjects/infrastructure-kubernetes-week-1-examples-vganesh/commands/2.get
+
+```
 
 
 $ **kubectl get namespaces**
