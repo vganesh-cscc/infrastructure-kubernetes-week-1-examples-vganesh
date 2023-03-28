@@ -61,6 +61,7 @@ Events:
 
 ## Ganesh notes 
 
+cd /home/CSCC/vganesh/IdeaProjects/vganesh-cscc-week04-infra-kube-part01/2 - pods
 
 
 $ **kubectl describe --help** 
@@ -93,14 +94,11 @@ Names of resources need to be unique within a namespace.
 Namespace-based scoping is applicable only for namespaced objects (e.g. Deployments, Services, etc) and not for cluster-wide objects (e.g. StorageClass, Nodes, PersistentVolumes, etc)
 
 
-Q: What does it mean if a namespace is going to communicate with another namespace? When does it happen? Examples??? 
-
-
+**Q:** What does it mean if a namespace is going to communicate with another namespace? When does it happen? Examples??? 
 
 What is a Kubernetes **cluster**  ? 
 
-A Kubernetes **cluster** is a set of nodes that run containerized applications. A cluster is a bunch of machines. With minikube, it is single node and so only one machine, in the example it is the CentOS VM machine created in a cloud environment. 
-
+A Kubernetes **cluster** is a set of nodes that run containerized applications. A cluster is a bunch of machines. With minikube, it is single node and so only one machine, for example it is the CentOS VM machine created in a cloud environment. 
 
 https://www.vmware.com/topics/glossary/content/kubernetes-cluster.html#:~:text=What%20is%20a%20Kubernetes%20cluster,and%20flexible%20than%20virtual%20machines.
 
@@ -117,7 +115,7 @@ NAME       STATUS   ROLES           AGE   VERSION
 **minikube**   Ready    control-plane   16h   v1.26.1
 
 
-In this example think of minikube to be the CentOS VM where minikube software was installed. 
+In this example think of minikube node to be the CentOS VM where minikube software was installed. 
 
 When minikube was installed on CentOS VM, the following file is created. The name of the cluster in the config file is minikube, a single node cluster. 
 
@@ -126,15 +124,15 @@ When minikube was installed on CentOS VM, the following file is created. The nam
 -rw-------. 1 vganesh docker 932 Mar 25 22:10 /home/CSCC/vganesh/.kube/config
 
 $ **grep cluster ~/.kube/config**
+```aidl
 clusters:
 - cluster:
   name: cluster_info
   cluster: minikube
   cluster: minikube
+```
 
-
-
-At my work place, the environment variable KUBECONFIG points to a test configuration yaml file that was created for test purpose. 
+At my work place, the environment variable **KUBECONFIG** points to a test configuration yaml file that was created for test purpose. 
 
 The name of the cluster is **test011** and it has about twenty nodes, meaning twenty different machines with different ip addresses. These nodes are running on AWS cloud environment. 
 
@@ -149,24 +147,33 @@ $ **kubectl get nodes | wc -l**
 
 21
 
+C:\Users\ganesv2
+
+**kubectl get nodes**
+```aidl
+NAME                                          STATUS   ROLES               AGE     VERSION
+ip-10-XXX-52-KKK.us-east-2.compute.internal   Ready    worker              48d     v1.24.9
+ip-10-XXX-53-YYY.us-east-2.compute.internal   Ready    worker              6d18h   v1.24.9
+...
+
+```
+
 
 C:\Users\ganesv2
 
 **findstr cluster .kube\config_test.yaml**
-
+```aidl
 clusters:
-
   cluster: docker-desktop
-
-  cluster: **test011**
-
+  cluster: test011
   cluster: test011-fqdn
 
-C:\Users\ganesv2
+```
 
-Pods - https://kubernetes.io/docs/concepts/workloads/pods/ 
 
-Pods are the smallest deployable units of computing that you can create and manage in Kubernetes. A pod is a one or more containers, with shared storage and network resources, and a specification for how to run the containers.
+**Pods** - https://kubernetes.io/docs/concepts/workloads/pods/ 
+
+**Pods** are the smallest deployable units of computing that you can create and manage in Kubernetes. A pod is a one or more containers, with shared storage and network resources, and a specification for how to run the containers.
 
 These are docker containers. 
 
@@ -206,7 +213,7 @@ C:\Users\ganesv2
 Thirty nine secrets are listed by the above command. 
 
 **kubectl describe secret <SECRET-NAME>  -n mac-cpp**
-
+```aidl
 Name:         stix-properties-dev
 Namespace:    mac-cpp
 Labels:       <none>
@@ -221,35 +228,32 @@ environment.properties:  8921 bytes
 log4j.properties:        1833 bytes
 log4j2.xml:              913 bytes
 
+```
 
 These three files are stored as a part of the secret and are available in the classpath when the java app runs. 
-
-
 
 Error from server (Forbidden): secrets is forbidden: User "u-5atut5g647" cannot list resource "secrets" in API group "" in the namespace "default"
 
 I can go to vault site inside Nationwide network and see the secrets accessible to me and my team members. 
 
-
-
-
 A Kubernetes **service** is a logical abstraction for a deployed group of pods in a cluster (which all perform the same function). Since pods are ephemeral, a service enables a group of pods, which provide specific functions (web services, image processing, etc.) to be assigned a name and unique IP address (clusterIP).
 
 
 $ **kubectl get services**
-
+```aidl
 NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
-
 kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   17h
 
+```
 
-TODO: Find ways to do services related CRUD activities. 
+
+**TODO**: Find ways to do services related CRUD activities. 
 
 At my work place. 
 
 C:\Users\ganesv2
 
-kubectl get services -n mac-cpp
+**kubectl get services -n mac-cpp**
 
 There are seventeen services listed. 
 
@@ -288,10 +292,10 @@ kubectl apply -f https://k8s.io/examples/controllers/nginx-deployment.yaml
 
 
 $ **kubectl get rs**
-
+```aidl
 NAME                  DESIRED   CURRENT   READY   AGE
-
-**my-nginx-85996f8dbd**   3         3         3       4h32m
+my-nginx-85996f8dbd   3         3         3       4h32m
+```
 
 $ **kubectl get rs -n mac-cpp | wc -l**
 
@@ -303,40 +307,36 @@ $ **kubectl get rs -n mac-cpp | wc -l**
 There are three nginx pods running. 
 
 $ **kubectl get pods**
-
+```aidl
 NAME                        READY   STATUS    RESTARTS   AGE
-
 my-nginx-85996f8dbd-4qdhj   1/1     Running   0          4h38m
-
 my-nginx-85996f8dbd-cfnj8   1/1     Running   0          4h38m
-
 my-nginx-85996f8dbd-j4t7d   1/1     Running   0          4h38m
-
 vganesh                     1/1     Running   0          4h51m
+```
 
 
 There is one nginx replica set available. Maybe this rs will be used if one the pod crashes? 
 
 $ **kubectl get rs**
-
+```aidl
 NAME                  DESIRED   CURRENT   READY   AGE
-
 my-nginx-85996f8dbd   3         3         3       4h38m
-
+```
 
 https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/
 
 **CronJob** is meant for performing regular scheduled actions such as backups, report generation, and so on.
+There are no differences between cronjob and a job. Cronsjobs are jobs scheduled to run regularly at a specified interval.
 
 **kubectl get cronjobs -n mac-cpp**
-
+```aidl
 NAME                   SCHEDULE       SUSPEND   ACTIVE   LAST SCHEDULE   AGE
-
 dev-piixe-reporting    13 22 31 2 *   True      0        <none>          5d22h
-
 test-piixe-reporting   13 22 31 2 *   True      0        <none>          5d22h
+```
 
-TODO: Get crud commands cronjob related, as well how to see the cronjob log files? Can you see the cronjob log file five minutes after the cronjon has completed? Is that possible? 
+**TODO:** Get crud commands cronjob related, as well how to see the cronjob log files? Can you see the cronjob log file five minutes after the cronjon has completed? Is that possible? 
 
 A **CronJob** creates Jobs on a repeating schedule. CronJob is meant for performing regular scheduled actions such as backups, report generation, and so on. One CronJob object is like one line of a crontab (cron table) file on a Unix system. It runs a job periodically on a given schedule, written in Cron format.
 
@@ -378,12 +378,11 @@ At my work place,
 
 
 **kubectl get roles -n mac-cpp**
-
+```aidl
 NAME                      CREATED AT
-
 gangplank-fluent          2021-10-08T13:51:21Z
-
 nginx-node-chart-fluent   2021-10-08T13:44:11Z
+```
 
 
 In Kubernetes, ClusterRoles and **Roles** define the actions a user can perform within a cluster or namespace, respectively. You can assign these roles to Kubernetes subjects (users, groups, or service accounts) with role bindings and cluster role bindings.

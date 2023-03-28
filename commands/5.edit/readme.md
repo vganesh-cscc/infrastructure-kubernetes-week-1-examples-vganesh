@@ -91,7 +91,7 @@ vganesh                     1/1     Running   0          31m
 
 ```
 
-Not able to change the name of the pod from vganesh to vramesh. The command failed with an error: name was changed. 
+Not able to change the name of the pod from vganesh to vramesh. The command failed with an error: **name was changed**. 
 
 It looks like only certain fields in that deployment are malleable??? 
 
