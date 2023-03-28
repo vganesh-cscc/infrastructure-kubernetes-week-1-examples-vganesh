@@ -399,5 +399,3 @@ https://medium.com/devops-mojo/kubernetes-storage-options-overview-persistent-vo
 2. **Persistent Volume Claim** — binding between a Pod and Persistent Volume.
 3. **Storage Class** — allows for dynamic provisioning of Persistent Volumes.
 
-
-
