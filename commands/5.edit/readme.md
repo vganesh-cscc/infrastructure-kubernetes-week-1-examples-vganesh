@@ -82,12 +82,14 @@ drwxr-xr-x. 10 vganesh domain users  127 Mar 25 21:48 ..
 
 
 $ **kubectl get pods**
-
+```aidl
 NAME                        READY   STATUS    RESTARTS   AGE
 my-nginx-85996f8dbd-4qdhj   1/1     Running   0          18m
 my-nginx-85996f8dbd-cfnj8   1/1     Running   0          18m
 my-nginx-85996f8dbd-j4t7d   1/1     Running   0          18m
 vganesh                     1/1     Running   0          31m
+
+```
 
 Not able to change the name of the pod from vganesh to vramesh. The command failed with an error: name was changed. 
 
@@ -96,10 +98,11 @@ It looks like only certain fields in that deployment are malleable???
 $ **kubectl edit pod vganesh**
 
 A copy of your changes has been stored to "/tmp/kubectl-edit-2662882958.yaml"
+
 error: At least one of apiVersion, kind and **name was changed**
 
 
-TODO: Find out the fields folks change in a deployment for all practical purpose, during testing ??? Maybe the port number? 
+**TODO**: Find out the fields folks change in a deployment for all practical purpose, during testing ??? Maybe the port number? 
 
 
 
@@ -111,7 +114,7 @@ my-nginx   3/3     3            3           174m
 
 
 $ **kubectl describe  deployment my-nginx**
-
+```aidl
 Name:                   my-nginx
 Namespace:              default
 CreationTimestamp:      Sun, 26 Mar 2023 11:43:48 -0400
@@ -144,13 +147,15 @@ Type    Reason             Age   From                   Message
   ----    ------             ----  ----                   -------
 Normal  ScalingReplicaSet  33m   deployment-controller  Scaled up replica set my-nginx-85996f8dbd to 3
 
+```
 
-TODO: Find out the fields in a pod like vganesh that can be edited during testing??? 
+
+**TODO**: Find out the fields in a pod like vganesh that can be edited during testing??? 
 
 
 
 $ **kubectl describe pod vganesh**  
-
+```aidl
 Name:             vganesh
 Namespace:        default
 Priority:         0
@@ -191,7 +196,7 @@ ConfigMapName:           kube-root-ca.crt
 ConfigMapOptional:       <nil>
 DownwardAPI:             true
 QoS Class:                   BestEffort
-Node-Selectors:              <none>
+Node-Selectors:               <none>
 Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
 node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
 Events:
@@ -201,5 +206,6 @@ Normal  Scheduled  49m   default-scheduler  Successfully assigned default/vganes
 Normal  Pulled     49m   kubelet            Container image "nginx:stable-alpine" already present on machine
 Normal  Created    49m   kubelet            Created container nginx
 Normal  Started    49m   kubelet            Started container nginx
+```
 
 
