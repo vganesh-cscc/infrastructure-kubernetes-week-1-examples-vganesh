@@ -61,9 +61,8 @@ Events:
 
 ## Ganesh notes 
 
-cd /home/CSCC/vganesh/IdeaProjects/vganesh-cscc-week04-infra-kube-part01/2 - pods
-
-
+cd /home/CSCC/vganesh/IdeaProjects/infrastructure-kubernetes-week-1-examples-vganesh/commands/6.describe
+ 
 $ **kubectl describe --help** 
 
 Show details of a specific resource or group of resources.

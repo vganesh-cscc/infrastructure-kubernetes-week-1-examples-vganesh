@@ -78,16 +78,17 @@ In the pre-lab we used `minikube dashboard` to open the dashboard page. Similarl
 
 http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/
 
-## Ganesh notes 
+## Ganesh notes
 
 $ **k proxy**
 
 Starting to serve on 127.0.0.1:8001
 
-From another terminal 
+From another terminal
 
 $ **curl 127.0.0.1:8001/version**
 
+```aidl
 {
 "major": "1",
 "minor": "26",
@@ -99,11 +100,11 @@ $ **curl 127.0.0.1:8001/version**
 "compiler": "gc",
 "platform": "linux/amd64"
 }
+```
 
 
 $ **curl http://127.0.0.1:8001/api/v1/namespaces/default/pods/vganesh/proxy/**
-
-
+```aidl
 <!DOCTYPE html>
 <html>
 <head>
@@ -127,5 +128,6 @@ Commercial support is available at
 <p><em>Thank you for using nginx.</em></p>
 </body>
 </html>
+```
 
 
